@@ -1,0 +1,21 @@
+{
+  "name": "birdcall",
+  "version": "0.0.1",
+  "description": "Basic combinators and bird aliases.",
+  "keywords": ["lambda calculus", "combinator", "birds"],
+  "bugs": {
+    "url" : "https://github.com/theqabalist/birdcall/issues",
+    "email" : "me@brandonkeown.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name" : "Brandon Keown",
+    "email" : "me@brandonkeown.com",
+    "url" : "http://www.brandonkeown.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theqabalist/birdcall"
+  },
+  "engines" : { "node" : ">=6.2.0" }
+}
