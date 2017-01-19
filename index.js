@@ -2,70 +2,57 @@
 /*eslint operator-linebreak: off*/
 /*eslint new-cap: off*/
 module.exports = (function () {
-    function partial(f, ...outer) {
-        return (...inner) => f(...outer.concat(inner));
-    }
-
-    function curryN(n, f) {
-        return (...some) => n - some.length > 0 ?
-                curryN(n - some.length, partial(f, ...some)) :
-                f(...some);
-    }
-
-    function curry(f) {
-        return curryN(f.length, f);
-    }
-
-    const B = curry((x, y, z) => x(y(z))),
-        B1 = curry((x, y, z, t) => x(y(z, t))),
-        B2 = curry((a, b, c, d, e) => a(b(c, d, e))),
-        B3 = curry((a, b, c, d) => a(b(c(d)))),
-        C = curry((a, b, c) => a(c, b)),
-        D = curry((a, b, c, d) => a(b, c(d))),
-        D1 = curry((a, b, c, d, e) => a(b, c(d, e))),
-        D2 = curry((a, b, c, d, e) => a(b(c), d(e))),
-        E = curry((a, b, c, d, e) => a(b(c, d, e))),
-        Ê = curry((a, b, c, d, e, f, g) => a(b(c, d), e(f, g))),
-        F = curry((a, b, c) => c(b, a)),
-        G = curry((a, b, c, d) => a(d, b(c))),
-        H = curry((a, b, c) => a(b, c, b)),
-        I = a => a,
-        J = curry((a, b, c, d) => a(b, a(d, c))),
-        K = curryN(2, I),
-        L = curry((a, b) => a(b(b))),
-        M = a => a(a),
-        M2 = curry((a, b) => a(b, a(b))),
-        O = curry((a, b) => b(a(b))),
-        Q = curry((a, b, c) => b(a(c))),
-        Q1 = curry((a, b, c) => a(c(b))),
-        Q2 = curry((a, b, c) => b(c(a))),
-        Q3 = curry((a, b, c) => c(a(b))),
-        Q4 = curry((a, b, c) => c(b(a))),
-        R = curry((a, b, c) => b(c, a)),
-        S = curry((a, b, c) => a(c, b(c))),
-        T = curry((a, b) => b(a)),
-        U = curry((a, b) => b(a(a, b))),
-        V = curry((a, b, c) => c(a, b)),
-        W = curry((a, b) => a(b, b)),
-        W1 = curry((a, b) => b(a, a)),
-        Y = S(L(L)),
-        IR = curry((a, b) => a(b)),
-        WR = curry((a, b, c) => a(b, c, c)),
-        CR = curry((a, b, c, d) => a(b, d, c)),
-        RR = curry((a, b, c, d) => a(c, d, b)),
-        FR = curry((a, b, c, d) => a(d, c, b)),
-        VR = curry((a, b, c, d) => a(c, b, d)),
-        IRR = curry((a, b, c) => a(b, c)),
-        WRR = curry((a, b, c, d) => a(b, c, d, d)),
-        CRR = curry((a, b, c, d, e) => a(b, c, e, d)),
-        RRR = curry((a, b, c, d, e) => a(b, d, e, c)),
-        FRR = curry((a, b, c, d, e) => a(b, e, d, c)),
-        VRR = curry((a, b, c, d, e) => a(b, e, c, d)),
-        KI = K(I),
-        //W = M(M),
-        KM = K(M),
-        CKM = C(K(M));
-        //Q = Y(O)
+    const S = a => b => c => (a)(c)((b)(c));
+    const K = a => b => a;
+    const B = (S)((K)(S))(K);
+    const D = (B)(B);
+    const B1 = (B)(B)(B);
+    const E = (B)(B1);
+    const B2 = (E)(B);
+    const D1 = (B)(D);
+    const B3 = (D1)(B);
+    const C = (S)((D)(S))((K)(K));
+    const I = a => a;
+    const O = (S)(I);
+    const M = (O)(I);
+    const D2 = (M)(D);
+    const Ê = (M)(E);
+    const T = (C)(I);
+    const F = (E)(T)(T)(E)(T);
+    const G = (D)(C);
+    const R = (D)(T);
+    const W = (C)((B)(M)(R));
+    const C$ = (B)(C);
+    const W$ = (B)(W);
+    const H = (W$)(C$);
+    const C$$ = (B)(C$);
+    const J = (C$$)(W)((C$)(E));
+    const M2 = (B)(M);
+    const L = (C)(M2);
+    const O = (S)(I);
+    const Q = (C)(B);
+    const Q1 = (C$)(B);
+    const Q2 = (C)(Q1);
+    const Q3 = (B)(T);
+    const R$ = (C$)(C$);
+    const F$ = (C$$)(R$);
+    const Q4 = (F$)(B);
+    const U = (L)(O);
+    const V = (C$)(T);
+    const W1 = (C)(W);
+    const Y = (S)(L)(L);
+    const I$ = (S)((S)(K))
+    const V$ = (C$)(F$);
+    const I$$ = a => b => c => (a)(b)(c);
+    const W$$ = (B)(W$);
+    const R$$ = (B)(R$);
+    const F$$ = (B)(F$);
+    const V$$ = (B)(V$);
+    const KI = (K)(I);
+    //const W = M(M),
+    const KM = (K)(M),
+    const CKM = (C)(KM);
+    //const Q = Y(O)
 
     return {
         B,
@@ -134,30 +121,30 @@ module.exports = (function () {
         converseWarbler: W1,
         Y,
         whyBird: Y,
-        IR,
-        idiotBirdOnceRemoved: IR,
-        WR,
-        warblerOneRemoved: WR,
-        CR,
-        cardinalOnceRemoved: CR,
-        RR,
-        robinOnceRemoved: RR,
-        FR,
-        finchOnceRemoved: FR,
-        VR,
-        vireoOnceRemoved: VR,
-        IRR,
-        idiotBirdTwiceRemoved: IRR,
-        WRR,
-        warblerTwiceRemoved: WRR,
-        CRR,
-        cardinalTwiceRemoved: CRR,
-        RRR,
-        robinTwiceRemoved: RRR,
-        FRR,
-        finchTwiceRemoved: FRR,
-        VRR,
-        vireoTwiceRemoved: VRR,
+        I$,
+        idiotBirdOnceRemoved: I$,
+        W$,
+        warblerOneRemoved: W$,
+        C$,
+        cardinalOnceRemoved: C$,
+        R$,
+        robinOnceRemoved: R$,
+        F$,
+        finchOnceRemoved: F$,
+        V$,
+        vireoOnceRemoved: V$,
+        I$$,
+        idiotBirdTwiceRemoved: I$$,
+        W$$,
+        warblerTwiceRemoved: W$$,
+        C$$,
+        cardinalTwiceRemoved: C$$,
+        R$$,
+        robinTwiceRemoved: R$$,
+        F$$,
+        finchTwiceRemoved: F$$,
+        V$$,
+        vireoTwiceRemoved: V$$,
         KI,
         kite: KI,
         KM,
