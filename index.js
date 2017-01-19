@@ -29,7 +29,6 @@ module.exports = (function () {
     const J = (C$$)(W)((C$)(E));
     const M2 = (B)(M);
     const L = (C)(M2);
-    const O = (S)(I);
     const Q = (C)(B);
     const Q1 = (C$)(B);
     const Q2 = (C)(Q1);
@@ -50,7 +49,7 @@ module.exports = (function () {
     const V$$ = (B)(V$);
     const KI = (K)(I);
     //const W = M(M),
-    const KM = (K)(M),
+    const KM = (K)(M);
     const CKM = (C)(KM);
     //const Q = Y(O)
 
